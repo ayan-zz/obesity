@@ -25,12 +25,12 @@ class data_transformation:
             num_col=['Age', 'Height', 'Weight', 'FCVC', 'NCP', 'CH2O', 'FAF', 'TUE']
             cat_col=['Gender', 'family_history_with_overweight', 'FAVC', 'CAEC', 'SMOKE', 'SCC', 'CALC', 'MTRANS']
             
-            num_pipeline=Pipeline(steps=(['imputer',SimpleImputer(strategy='median')],
-                            ['scaler',StandardScaler()]))
-            cat_pipeline=Pipeline(steps=(['imputer',SimpleImputer(strategy='most_frequent')],
-                            ['encoder',OneHotEncoder()]))
+            num_pipeline=Pipeline(steps=[('imputer',SimpleImputer(strategy='median')),
+                                         ('scale', StandardScaler())])
+            cat_pipeline=Pipeline(steps=[('imputer', SimpleImputer(strategy='most_frequent')),
+                                         ('encoder', OneHotEncoder())])
             preprocessor=ColumnTransformer([('numerical_pipeline',num_pipeline,num_col),
-                              ('categorical_pipeline',cat_pipeline,cat_col)])
+                                            ('categorical_pipeline',cat_pipeline,cat_col)])
             return preprocessor
         except Exception as e:
             raise CustomException(e,sys)
@@ -40,10 +40,10 @@ class data_transformation:
             logging.info('initializing data transformation')
             df_train=pd.read_csv(train_path)
             df_test=pd.read_csv(test_path)
-            le=LabelEncoder()
+            #le=LabelEncoder()
             target_col=['NObeyesdad']
-            df_train['NObeyesdad']=le.fit_transform(df_train['NObeyesdad'])
-            df_test['NObeyesdad']=le.transform(df_test['NObeyesdad'])
+            #df_train['NObeyesdad']=le.fit_transform(df_train['NObeyesdad'])
+            #df_test['NObeyesdad']=le.transform(df_test['NObeyesdad'])
             target_feature_train_df=df_train[target_col]
             target_feature_test_df=df_test[target_col]
 

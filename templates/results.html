@@ -1,143 +1,197 @@
 <html>
-<body>
-    <div class="login">
-       <h1>Loan Approval Prediction</h1>
-       
-       <form action="{{ url_for('predict_datapoint')}}" method="POST">
-        <h3>
-            <legend>Enter the records</legend>
-        </h3>
-        <div class="mb-3">
-            <label class="form-label">Loan_ID</label>
-            <input class="form-control" type="number" name="Loan ID" placeholder="Enter ID" />
-        </div>
-        
-        <div class="mb-3">
-            <label class="form-label">Gender</label>
-            <select class="form-control" name="Gender" placeholder="Enter Gender" required>
-                <option class="placeholder" selected disabled value="">Select Gender</option>
-                <option value='Male'>
-                    MALE
-                </option>
-                <option value='Female'>
-                    FEMALE
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Education</label>
-            <select class="form-control" name="Education" placeholder="Enter Education" required>
-                <option class="placeholder" selected disabled value="">Select Education</option>
-                <option value='Graduate'>
-                    Graduate
-                </option>
-                <option value='Not Graduate'>
-                    Not Graduate
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Married</label>
-            <select class="form-control" name="Married" placeholder="Enter Married" required>
-                <option class="placeholder" selected disabled value="">Select Married</option>
-                <option value='Yes'>
-                    Yes
-                </option>
-                <option value='No'>
-                    No
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Self_Employed</label>
-            <select class="form-control" name="Self_Employed" placeholder="Enter Self_Employed" required>
-                <option class="placeholder" selected disabled value="">Select Self_Employed</option>
-                <option value='Yes'>
-                    Yes
-                </option>
-                <option value='No'>
-                    No
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Property_Area</label>
-            <select class="form-control" name="Property_Area" placeholder="Enter Property_Area" required>
-                <option class="placeholder" selected disabled value="">Select Property_Area</option>
-                <option value='Semiurban'>
-                    Semiurban
-                </option>
-                <option value='Urban'>
-                    Urban
-                </option>
-                <option value='Rural'>
-                    Rural
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Dependents</label>
-            <select class="form-control" name="Dependents" placeholder="Enter Dependents" required>
-                <option class="placeholder" selected disabled value="">Select Dependents</option>
-                <option value='0'>
-                    0
-                </option>
-                <option value='1'>
-                    1
-                </option>
-                <option value='2'>
-                    2
-                </option>
-                <option value='3+'>
-                    3+
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Credit_History</label>
-            <select class="form-control" name="Credit_History" placeholder="Enter Credit_History" required>
-                <option class="placeholder" selected disabled value="">Select Credit_History</option>
-                <option value='1'>
-                    1
-                </option>
-                <option value='0'>
-                    0
-                </option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">ApplicantIncome</label>
-            <input class="form-control" type="number" name="ApplicantIncome"
-             placeholder="Enter the ApplicantIncome" min='0' max='100000000' />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">CoapplicantIncome</label>
-            <input class="form-control" type="number" name="CoapplicantIncome"
-             placeholder="Enter the CoapplicantIncome" min='0' max='100000000' />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">LoanAmount</label>
-            <input class="form-control" type="number" name="LoanAmount"
-             placeholder="Enter the LoanAmount" min='0' max='100000000' />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Loan_Amount_Term</label>
-            <input class="form-control" type="number" name="Loan_Amount_Term"
-             placeholder="Enter the Loan_Amount_Term" min='0' max='1000' />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Credit_History</label>
-            <input class="form-control" type="number" name="Credit_History"
-             placeholder="Enter the Credit_History" min='0' max='1' />
-        </div>
-        <div class="mb-3">
-            <div class="mb-3">
-                <input class="btn btn-primary" type="submit" value="Predict Default" required />
-            </div>
-           </form>
-        </div>
-    <h2>
-        THE STATUS FOR LOAN APPROVAL IS: {{results}}
-    </h2>
+<head>
+<title>Prediction for Obesity in Peoples</title>
+</head>
+
+<h2 ALIGN="CENTER">OBESITY PREDICTION IN PEOPLES </h2>
+
+<form action="{{url_for('predict_datapoint')}}" method="post">
+    <table border="0" align="center">
+<tbody>
+
+<tr>
+    <td><label for="Gender">Gender:</label></td>
+    <td><select class="form-control" name="Gender" placeholder="Enter Gender" required>
+        <option class="placeholder" selected disabled value="">Select Gender</option>
+        <option value="Male">
+            Male
+        </option>
+        <option value="Female">
+            Female
+        </option>
+    </select>
+    </td>
+</tr>
+
+
+<tr>
+    <td><label for="Age">Age:</label></td>
+    <td><input class="form-control" type="number" name="Age" placeholder="Enter the Age" min='0' max='1000' /></td>
+</tr>
+
+<tr>
+    <td><label for="Height">Height:</label></td>
+    <td><input id="Height" maxlength="50" name="Height" type="number" type="number" min="1" max="100" step="0.1" placeholder="Enter float value" /></td>
+</tr>
+
+<tr>
+    <td><label for="Weight">Weight:</label></td>
+    <td><input id="Weight" maxlength="50" name="Weight" type="number" type="number" min="1" max="500" placeholder="Enter float value" /></td>
+</tr>
+
+<tr>
+    <td><label for="family_history_with_overweight">family_history_with_overweight:</label></td>
+    <td><select class="form-control" name="family_history_with_overweight" placeholder="Enter Family History" required>
+        <option class="placeholder" selected disabled value="">Select history_with_overweight</option>
+        <option value="yes">
+            yes
+        </option>
+        <option value="no">
+            no
+        </option>
+    </select>
+    </td>
+</tr>
+
+<tr>
+    <td><label for="FAVC">FAVC:</label></td>
+    <td><select class="form-control" name="FAVC" placeholder="Enter FAVC" required>
+        <option class="placeholder" selected disabled value="">Select FAVC</option>
+        <option value="yes">
+            yes
+        </option>
+        <option value="no">
+            no
+        </option>
+    </select>
+    </td>
+</tr>
+
+<tr>
+    <td><label for="FCVC">FCVC: </label></td>
+    <td><input id="FCVC" maxlength="50" name="FCVC" type="number" type="number" min="1" max="50" step="0.1" placeholder="Enter float value" /></td>
+</tr>
+
+<tr>
+    <td><label for="NCP">NCP: </label></td>
+    <td><input id="NCP" maxlength="50" name="NCP" type="number" type="number" min="1" max="50" step="0.1" placeholder="Enter float value" /></td>
+</tr>
+
+<tr>
+    <td><label for="CAEC">CAEC:</label></td>
+    <td><select name="CAEC" placeholder="Enter CAEC" required>
+        <option class="placeholder" selected disabled value="">Select CAEC</option>
+        <option value="Sometimes">
+            Sometimes
+        </option>
+        <option value="Frequently">
+            Frequently
+        </option>
+        <option value="Always">
+            Always
+        </option>
+        <option value="no">
+            no
+        </option>
+    </select>
+</td>
+</tr>
+
+<tr>
+    <td><label for="SMOKE">SMOKE:</label></td>
+    <td><select class="form-control" name="SMOKE" placeholder="Enter SMOKE" required>
+        <option class="placeholder" selected disabled value="">Select SMOKE</option>
+        <option value="yes">
+            yes
+        </option>
+        <option value="no">
+            no
+        </option>
+    </select>
+    </td>
+</tr>
+
+<tr>
+    <td><label for="SCC">SCC:</label></td>
+    <td><select class="form-control" name="SCC" placeholder="Enter SCC" required>
+        <option class="placeholder" selected disabled value="">Select SCC</option>
+        <option value="yes">
+            yes
+        </option>
+        <option value="no">
+            no
+        </option>
+    </select>
+    </td>
+</tr>
+
+<tr>
+    <td><label for="CH2O">CH2O: </label></td>
+    <td><input id="CH2O" maxlength="50" name="CH2O" type="number" type="number" min="1" max="10" step="0.1" placeholder="Enter float value" /></td>
+</tr>
+
+<tr>
+    <td><label for="FAF">FAF: </label></td>
+    <td><input id="FAF" maxlength="50" name="FAF" type="number" type="number" min="1" max="10" placeholder="Enter float value" /></td>
+</tr>
+
+<tr>
+    <td><label for="TUE">TUE: </label></td>
+    <td><input id="TUE" maxlength="50" name="TUE" type="number" type="number" min="1" max="10" placeholder="Enter float value" /></td>
+</tr>
+
+<tr>
+    <td><label for="CALC">CALC:</label></td>
+    <td><select name="CALC" placeholder="Enter CALC" required>
+        <option class="placeholder" selected disabled value="">Select CALC</option>
+        <option value="Sometimes">
+            Sometimes
+        </option>
+        <option value="Frequently">
+            Frequently
+        </option>
+        <option value="Always">
+            Always
+        </option>
+        <option value="no">
+            no
+        </option>
+    </select>
+</td>
+</tr>
+
+<tr>
+    <td><label for="MTRANS">MTRANS:</label></td>
+    <td><select name="MTRANS" placeholder="Enter MTRANS" required>
+        <option class="placeholder" selected disabled value="">Select MTRANS</option>
+        <option value="Public_Transportation">
+            Public_Transportation
+        </option>
+        <option value="Automobile">
+            Automobile
+        </option>
+        <option value="Walking">
+            Walking
+        </option>
+        <option value="Motorbike">
+            Motorbike
+        </option>
+        <option value="Bike">
+            Bike
+        </option>
+    </select>
+</td>
+</tr>
+
+<tr>
+<td><div class="mb-3">
+    <input class="btn btn-primary" type="submit" value="Predict obesity type" required />
+</div>
+</td></tr>
+<td><div>
+    <h3 ALIGN="CENTER">YOUR OBESITY IS AT: {{results}} </h3>
+</td></div>
+</form>
+</div>
 </body>
 </html>

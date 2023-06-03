@@ -23,7 +23,9 @@ def save_object(file_path,obj):
 def evaluate_models(X_train,X_test,y_train,y_test,models,params):
     try:
         report={}
-        
+        le=LabelEncoder()
+        y_train=le.fit_transform(y_train)
+        y_test=le.transform(y_test)
         for i in range(len(list(models))):
             model=list(models.values())[i]
             param=params[list(models.keys())[i]]
